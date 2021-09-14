@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全景图拼接</title>
+</head>
+<body>
+<!--模板中代码-->
+<p>多个图片片段需要分多次上传，全部上传完毕后可以开始拼接，但执行下一次拼接前必须先清除旧的图片片段</p>
+<form enctype="multipart/form-data" action="/clear_olds/" method="POST">
+    {% csrf_token %}
+       <input type="submit" value="清除旧的图片片段" onclick="/clear_olds/"/>
+</form>
+<form enctype="multipart/form-data" action="/upload/" method="POST">
+	{% csrf_token %}
+       <input type="file" name="img" />
+       <br/>
+       <input type="submit" value="上传"/>
+</form>
+<form enctype="multipart/form-data" action="/view_imgs_all/" method="POST">
+    {% csrf_token %}
+       <input type="submit" value="查看全部图片名" onclick="/view_imgs_all/"/>
+</form>
+<form enctype="multipart/form-data" action="/pano/" method="POST">
+    {% csrf_token %}
+       <input type="submit" value="拼接全景" onclick="window.location.href='/pano/"/>
+</form>
+<form enctype="multipart/form-data" action="/download/" method="POST">
+    {% csrf_token %}
+       <input type="submit" value="下载全景图" onclick="window.location.href='/download/"/>
+</form>
+</body>
+</html>
